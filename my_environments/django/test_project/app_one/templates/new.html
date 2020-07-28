@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Please make a post.</h1>
-    <form action="/create">
+    <form action="/create" method=POST>
         {% csrf_token %}
         Blog Post: <input type="text" name ="b_post">
         Poster Name: <input type='text' name="p_name"
