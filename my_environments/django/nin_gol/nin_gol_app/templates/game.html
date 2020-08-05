@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ninja Battle</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+       h1{
+            background-color: goldenrod; 
+            padding: 50px;
+            text-align: center;
+       } 
+    </style>
+</head>
+<body>
+    <div> id="wrapper>
+    <!-- personalized greeting -->
+    <h1>Welcome honored ninja {{request.session.name}}</h1>
+    <!-- current number of soldiers -->
+    <h2>Number of soldiers: {{request.session.ninja_army}}</h2>
+    <!-- append ninja icon -->
+    {{request.session.ninja_icon}}
+    <!-- button for adding soldiers -->
+    <a href="add_ninja">Add a ninja</a>
+    <a> href="/fight">Time to fight</a>
+</div>
+</body>
+</html>
