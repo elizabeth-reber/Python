@@ -1,5 +1,5 @@
 # Query: Create 3 new users   
-User.objects.create(first_name="Michael", last_name="Choi", email_address="mchoi@foo.com", age=29)
+User.objects.create(first_name="Elizabeth", last_name="Reber", email_address="mchoi@foo.com", age=29)
 User.objects.create(first_name="Dylan", last_name="Sharkey", email_address="dsharkey@foo.com", age=44)
 User.objects.create(first_name="Devon", last_name="Newsom", email_address="sup@foo.com", age=99)
 

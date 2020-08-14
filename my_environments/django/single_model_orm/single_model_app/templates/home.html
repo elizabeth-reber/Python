@@ -3,9 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>test</title>
+    <title>Users with Templates</title>
 </head>
 <body>
-    <H1>HALLALUJA SOMETHING'S WORKING</H1>
+    <H1>All the users</H1>
+    <ul>
+    {% for users in all_the_Users %}
+        <li>{{ users.first_name }} {{ users.last_name }} {{ users.email_address }}</li>
+    {% endfor %}
+
+    <form action = "/create" method = POST>
+        {% csrf_token %}
+        <p>First Name</p>
+        <input type="text" name="first_name">
+        <p>Last Name</p>
+        <input type="text" name="last_name">
+        <p>Email</p>
+        <input type="text" name="email">
+        <p>Age</p>
+        <input type="text" name="age">
+        <input type="submit" value="Create New User">
+    </form>
 </body>
 </html>
+
+<!-- <div class='form'>
+    <h3>Register:</h3>
+    <form action="/register" method=POST>
+        {% csrf_token %}
+        <p>First Name</p>
+        <input type="text" name="first_name">
+        <p>Last Name</p>
+        <input type="text" name="last_name">
+        <p>Email</p>
+        <input type="text" name="email">
+        <p>Password</p>
+        <input type="text" name="password">
+        <p>Confirm Password</p>
+        <input type="text" name="confirm_password">
+        <input type="submit" value="Register">
+    </form>
+</div> -->

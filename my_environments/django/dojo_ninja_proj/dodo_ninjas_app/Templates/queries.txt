@@ -1,0 +1,43 @@
+Create 3 new dojos
+>>> dojos1 = Dojos.objects.create(name = "Dojos 1", city = "Chicago", state = "Illinois")
+>>> dojos2 = Dojos.objects.create(name = "Dojos 2", city = "San Francisco", state = "California")
+>>> dojos3 = Dojos.objects.create(name = "Dojos 3", city = "Seattle", state = "Washington")
+
+Delete the first 3 dojos
+>>> dojos1.delete()
+>>> dojos2.delete()
+>>> dojos3.delete()
+
+Create 3 more dojos
+>>> dojos4 = Dojos.objects.create(name = "Dojos 4", city = "Chicago", state = "Illinois")
+>>> dojos5 = Dojos.objects.create(name = "Dojos 5", city = "San Francisco", state = "California")
+>>> dojos6 = Dojos.objects.create(name = "Dojos 6", city = "Seattle", state = "Washington")
+
+Create 3 ninjas that belong to the first dojo
+>>> ninjas1 = Ninjas.objects.create(first_name = "Charley", last_name = "Reber", dojo_id = dojos4)
+>>> ninjas2 = Ninjas.objects.create(first_name = "David", last_name = "Reber", dojo_id = dojos4)
+>>> ninjas3 = Ninjas.objects.create(first_name = "Daniel", last_name = "Reber", dojo_id = dojos4)
+
+Create 3 ninjas that belong to the second dojo
+>>> ninjas4 = Ninjas.objects.create(first_name = "Luna", last_name = "Bengal", dojo_id = dojos5)
+>>> ninjas5 = Ninjas.objects.create(first_name = "Rowley", last_name = "Bengal",dojo_id dojos = dojos5)
+>>> ninjas6 = Ninjas.objects.create(first_name = "Rafiki", last_name = "Bengal", dojo_id = dojos5)
+
+Create 3 ninjas that belong to the third dojo
+>>> ninjas7 = Ninjas.objects.create(first_name = "Me", last_name = "Reber", dojo_id = dojos6)
+>>> ninjas8 = Ninjas.objects.create(first_name = "Myself", last_name = "Reber", dojo_id = dojos6)
+>>> ninjas9 = Ninjas.objects.create(first_name = "I", last_name = "Reber", dojo_id = dojos6)
+
+Retrieve all ninjas from the first dojo
+>>> Dojos.objects.first().ninjas.all()
+
+Retrieve all ninjas from the last dojo
+>>> Dojos.objects.last().ninjas.all()
+
+Retrieve the last ninja's dojo
+>>> Ninjas.objects.last().dojos
+
+Create a new dojo
+>>> Dojos.objects.create(name = "Dojos 7", city = "Copperopolis", state = "California", desc = "All the Ninjas")
+
+ 
