@@ -3,9 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Test</title>
+    <title>Dojos and Ninjas with Templates</title>
 </head>
 <body>
-    <h1>Things are working yo</h1>
-</body>
+    <H1>Add a Dojo</H1>
+    <ul>
+    {% for dojos in all_the_dojos %}
+        <li>{{ dojos.name }} {{ dojos.city }} {{ dojos.state}}</li>
+    {% endfor %}
+
+    <form action = "/create" method = POST>
+        {% csrf_token %}
+        <p>Name</p>
+        <input type="text" name="name">
+        <p>City</p>
+        <input type="text" name="city">
+        <p>State</p>
+        <input type="text" name="state">
+
+        <input type="submit" value="Create New Dojo">
+    </form>
+
+    <H1>Add a Ninja</H1>
+    <ul>
+    {% for ninjas in all_the_ninjas %}
+        <li>{{ ninjas.first_name }} {{ ninjas.last_name }} {{ ninjas.dojo}}</li>
+    {% endfor %}
+
+    <form action = "/create" method = POST>
+        {% csrf_token %}
+        <p>First Name</p>
+        <input type="text" name="first_name">
+        <p>Last Name</p>
+        <input type="text" name="last_name">
+        <p>Dojo</p>
+        <input type="text" name="dojo">
+
+        <input type="submit" value="Create New Dojo">
+    </form>
+    <h1>All the Dojos</h1>
+    {% for dojo in dojos %}
+        <h3>Ninjas at the {{ dojo.name }}</h3>
+        <ul>
+        {% for ninja in dojo.ninjas.all %}
+            <li>{{ ninja.first_name }} {{ ninja.last_name }}</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
+</div>
+</body> 
 </html>
