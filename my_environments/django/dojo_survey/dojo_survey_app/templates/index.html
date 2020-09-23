@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h1>this project is good to go!  Using templates in the index.html file!</h1>
+    <a href="/dashboard">Link to Dashboard</a>
+    <p>{{name}}</p>
+    <p>{{email}}</p>
+    <form action="/submission" method="POST">
+        {% csrf_token %}
+        Name: <input type="text" name="usr_name">
+        <input type="submit">
+    </form>
+</body>
+</html>
