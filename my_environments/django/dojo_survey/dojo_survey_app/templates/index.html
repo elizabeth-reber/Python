@@ -13,6 +13,11 @@
     <form action="/submission" method="POST">
         {% csrf_token %}
         Name: <input type="text" name="usr_name">
+        Secret: <input type="text" name="secret">
+        Fav Spongebob Character: <select name="fav_character">
+            <option value="Squidward">Squidward</option>
+            <option value="Spongebob">Spongebob</option>
+            <option value="Patrick">Patrick</option>
         <input type="submit">
     </form>
 </body>

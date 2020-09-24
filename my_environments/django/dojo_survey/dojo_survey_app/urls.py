@@ -3,6 +3,7 @@ from . import viewsurlpatterns = [
 	path('', views.index),
 	path('dashboard', views.dashboard),
 	path('user/<int>'),
-	path('firsttemplate', views.firstTemplate)
-	path('submission', views.submission)
+	path('firsttemplate', views.firstTemplate),
+	path('submission', views.submission),
+	path('thank_you', views.thank_you)
 ]
