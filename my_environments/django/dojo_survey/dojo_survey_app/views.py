@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render, HttpResponse, redirect
 
 # Create your views here.
 def index(request):
@@ -30,9 +30,9 @@ def submission(request):
     return redirect("/thank_you")
 
 def thank_you(request):
-    context = {
-        "name_from_form" : request.POST['user_name']
-        "secret_from_form": request.POST['secret']
-        "fav_character": request.POST['fav_character']
-    }
-    return render(request, "thank_you.html", context)
+    #context = {
+    #    "name_from_form" : request.session['user_name']
+    #    "secret_from_form": request.session['secret']
+    #   "fav_character": request.session['fav_character']
+    #}
+    return render(request, "thank_you.html")

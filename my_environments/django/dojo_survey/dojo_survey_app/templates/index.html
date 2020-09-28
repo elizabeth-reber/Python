@@ -12,7 +12,7 @@
     <p>{{email}}</p>
     <form action="/submission" method="POST">
         {% csrf_token %}
-        Name: <input type="text" name="usr_name">
+        Name: <input type="text" name="user_name">
         Secret: <input type="text" name="secret">
         Fav Spongebob Character: <select name="fav_character">
             <option value="Squidward">Squidward</option>
