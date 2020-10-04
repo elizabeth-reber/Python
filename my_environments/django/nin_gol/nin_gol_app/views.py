@@ -3,36 +3,36 @@ import random
 
 
 def index(request):
-    return render(request, 'home.html')
+    if 'gold' not in request.session:
+        request.session['gold'] = 0
+    if 'activities' not in request.session:
+        request.session['activities'] = []
+    return render(request, 'index.html')
 
-# Store player data from the form inside session variables, 
-# and return redirect to a method that renders game.html
-def game(request):
-    print(request.POST, 'this is my form object')
-    request.session['name'] = request.POST['username']
-    request.session['ninja_army'] = 0
-    request.session['ninja_icon'] = [ ]
-    return redirect('/ninja_battle')
+def process_money(request):
+    print("The form has been submitted!")
+    print(request.post)
+    if request.POST == 'farm':
+        num = random.randint(10,21)
+        request.session['gold'] += random.randint(10,21)
+        request.session['activities'].append("you earned " + str(num) + "Yay!")
+    elif request.POST['building'] == 'cave':
+        num = random.randint(5,11)
+        request.session['gold'] += random.randint(5,11)
+        request.session['activities'].append("you earned " + str(num) + "Yay!")
+    elif request.POST['building'] == 'house':
+        num = random.randint(2,6)
+        request.session['gold'] += random.randint(2,6)
+        request.session['activities'].append("you earned " + str(num) + "Yay!")
+    elif request.POST['building'] == 'casino':
+        num = random.randint(-50,51)
+        request.session['gold'] += random.randint(-50,51)
+        if num > 0:
+            request.session['activities'].append("you earned " + str(num) + "Yay!")
+        elif num == 0:
+            request.session['activities'].append("you earned nothing!")  
+        else:
+            request.session['activities'].append("you lost " + sr(num) + "! BOOOOOO!")
+    return redirect('/')
 
-# renders game html
-def start_battle(request):
-    return render(request, 'game.html')
 
-# Add ninja with a counter
-def add(request):
-    request.session['ninja_army'] += 1
-    request.session['ninja_icon'].append(0)
-    return redirect('/start_battle')
-
-#generate random number, fight and return ninja icon
-def fight(request):
-    randy = int(random.random() * request.session['ninja_army'] * 2)
-    if randy > request.session['ninja_army']:
-        difference = randy -= difference
-        request.session['ninja_army'] -= randy - request.session['ninja_army']
-    else:
-        difference = request.session['ninja_army'] - randy
-        request.session['ninja_army'] += request.session['ninja_army'] - randy
-            for num in range(difference):
-            request.session['ninja_icon'].append(0)
-    return redirect('start_battle')

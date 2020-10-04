@@ -3,8 +3,8 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
-    path('start_game', views.game),
-    path('battle', views.battle)
-    path('add_ninja', views.add)
-    path('fight', views.fight)
+    path('process_money', views.process_money),
+    # path('battle', views.battle),
+    # path('add_ninja', views.add),
+    # path('fight', views.fight)
 ]
