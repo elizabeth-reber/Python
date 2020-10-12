@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Dog</title>
+    <title>Create Show</title>
 </head>
 <body>
-    <form action="/dogs/create" method="POST">
+    <form action="/shows/create" method="POST">
         {% csrf_token %}
-        Name: <input type="text" name="dog_name">
-        Age: <input type="text" nme="age">
-        <input type="submit" value="Create a Dog">
+        Name: <input type="text" name="show_name">
+        <input type="submit" value="Create a Show">
     </form>
 </body>
 </html>

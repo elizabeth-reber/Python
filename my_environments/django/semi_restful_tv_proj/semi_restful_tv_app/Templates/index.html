@@ -3,29 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Index</title>
 </head>
 <body>
-    <a href="/dogs/new">Create a Dog</a>
+    <a href="/shows/new">Create a Show</a>
     <table>
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Age</th>
             <th>Actions</th>
         </tr>
-        {% for dog in all_dogs %}
+        {% for show in all_shows %}
         <tr>
-            <td>{{dog.id}}</td>
-            <td>{{dog.name}}</td>
-            <td>{{dog.age}}</td>
+            <td>{{show.id}}</td>
+            <td>{{show.name}}</td>
             <td>
-                <a href="/dogs/{{dog.id}}">Show</a>
-                <form action="/dogs/{{dog.id}}/destroy" method="POST">
+                <a href="/shows/{{show.id}}">Show</a>
+                <form action="/shows/{{show.id}}/destroy" method="POST">
                     {% csrf_token %}
                     <input type="submit" value="Delete">
                 </form>
-                <a href="/dogs/{{dog.id}}/edit">Edit</a>
+                <a href="/shows/{{show.id}}/edit">Edit</a>
             </td>
         </tr>
         {% endfor %}

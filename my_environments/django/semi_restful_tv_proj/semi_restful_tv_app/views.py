@@ -5,49 +5,48 @@ import random
 
 # Create your views here.
 def index(request):
-    #show all dogs in DB
+    #show all shows in DB
     context = {
-    'all_dogs': Dog.objects.all()
+    'all_shows': Show.objects.all()
     }
     return render(request, "index.html") 
 
 def create_form(request):
-    #show a form to create a Dog
+    #show a form to create a Show
     return render(request, 'create.html')
 
-def create_dog(request):
+def create_show(request):
     #create an instance of the Dog class
     if request.method == "POST":
         print(request.POST)
-        dog.objects.create(name=request.POST['dog_name'], age=request.POST['age'])
+        show.objects.create(name=request.POST['show_name'])
     return redirect('/')
 
-def show_dog(request, id):
-    #show one instance of a dog on a template
+def show_show(request, id):
+    #show one instance of a show on a template
     context = {
-        "one_dog": Dog.objects.get(id=id)
+        "one_show": show.objects.get(id=id)
     }
-    return render(request, 'one_dog.html', context)
+    return render(request, 'one_show.html', context)
 
-def delete_dog(request, id):
-    #delete a dog from the database
+def delete_show(request, id):
+    #delete a show from the database
     if request.method == "POST":
-        dog_to_delete = Dog.objects.get(id=id)
-        dog_to_delete.delete()
+        show_to_delete = show.objects.get(id=id)
+        show_to_delete.delete()
     return redirect('/')
 
-def edit_dog(request, id):
-    #show a form to edit a Dog instance
+def edit_show(request, id):
+    #show a form to edit a show instance
     context = {
-        "one_dog": Dog.objects.get(id=id)
+        "one_show": show.objects.get(id=id)
     }
-    return render(request, "one_dog_edit.html", context)
+    return render(request, "one_show_edit.html", context)
 
-def update_dog(request, id): 
-    #update the single Dog in the database and save
+def update_show(request, id): 
+    #update the single show in the database and save
     if request.method == "POST":
-        dog_to_update = dog.objects.get(id=id)
-        dog_to_update.name = request.POST['dog_name']
-        dog_to_update.age = request.POST['age']
-        dog_to_update.save()
-    return redirect('/dogs/' + id)
+        show_to_update = show.objects.get(id=id)
+        show_to_update.name = request.POST['show_name']
+        show_to_update.save()
+    return redirect('/shows/' + id)
