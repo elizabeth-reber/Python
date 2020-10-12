@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ninja Gold</title>
     {% load static %}
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 
 <body>
         <div id="wrapper">
         <h1>Welcome to Ninja Gold</h1>
+        <a href="/reset">reset</a>
         <h3>The player who acumulates the most gold is honored as the Golden Ninja, and wins the game!</h3>
         <h3>Your Gold: {{request.session.gold}}</h3>
         <h2>Farm</h2>
@@ -48,7 +49,8 @@
         <div>
             <h2>Activities</h2>
             {% for activity in request.session.activities %}
-            {%  endfor %}
+                <p class="red">{{activity}}</p>
+            {% endfor %}
         </div>
 </div>
 </body>

@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>The form has been submitted, thanks {{request.session.user_name}}.</h1>
-    <p>Ok, I won't tell anyone that {{request.session.secret}}</p>
-    <p>Your favorite character is: {{request.session.fav_character}}</p>
+    <p>Your favorite language is {{request.session.fav_language}}</p>
+    <p>Your dojo location is: {{request.session.dojo_location}}</p>
+    <p>Comment: {{request.session.comment}}</p>
     <a href="/firstTemplate">Back to form</a>
 </body>
 </html>

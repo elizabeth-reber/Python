@@ -11,8 +11,8 @@ def index(request):
 
 def process_money(request):
     print("The form has been submitted!")
-    print(request.post)
-    if request.POST == 'farm':
+    print(request.POST)
+    if request.POST['building'] == 'farm':
         num = random.randint(10,21)
         request.session['gold'] += random.randint(10,21)
         request.session['activities'].append("you earned " + str(num) + "Yay!")
@@ -32,7 +32,11 @@ def process_money(request):
         elif num == 0:
             request.session['activities'].append("you earned nothing!")  
         else:
-            request.session['activities'].append("you lost " + sr(num) + "! BOOOOOO!")
+            request.session['activities'].append("you lost " + str(num) + "! BOOOOOO!")
+    return redirect('/')
+
+def reset(request):
+    request.session.flush()
     return redirect('/')
 
 

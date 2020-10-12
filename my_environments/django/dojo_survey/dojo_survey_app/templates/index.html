@@ -3,21 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Index</title>
 </head>
 <body>
-    <h1>this project is good to go!  Using templates in the index.html file!</h1>
-    <a href="/dashboard">Link to Dashboard</a>
+    <h1>Dojo Survey</h1>
+    <!-- <a href="/dashboard">Link to Dashboard</a> -->
     <p>{{name}}</p>
     <p>{{email}}</p>
     <form action="/submission" method="POST">
         {% csrf_token %}
         Name: <input type="text" name="user_name">
-        Secret: <input type="text" name="secret">
-        Fav Spongebob Character: <select name="fav_character">
-            <option value="Squidward">Squidward</option>
-            <option value="Spongebob">Spongebob</option>
-            <option value="Patrick">Patrick</option>
+        Email: <input type="text" user_email="user_email">
+        Dojo Location: <select dojo_location="dojo_location">
+            <option value="Mars">Mars</option>
+            <option value="Donalt_Trump's_Penthouse">Donald_Trump's_Penthouse</option>
+            <option value="Saudi_Arabia">saudi_arabia</option>
+        Fav language: <select fav_language="fav_language">
+            <option value="Python">Python</option>
+            <option value="Java">Java</option>
+            <option value="Java_Script">java_script</option>
+        Comment: <input type="text" comment="comment">
         <input type="submit">
     </form>
 </body>

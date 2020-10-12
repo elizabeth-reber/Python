@@ -12,8 +12,8 @@ def user_page(request, id):
 
 def firstTemplate(request):
     context = {
-        'name': "Bob Smith",
-        'email': 'bob@gmail.com'
+        # 'name': "Bob Smith",
+        # 'email': 'bob@gmail.com'
     }
     return render(request, "index.html", context)
 
