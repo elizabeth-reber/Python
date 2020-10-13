@@ -6,7 +6,7 @@
     <title>Edit a Show</title>
 </head>
 <body>
-    <h1>Edit {{one_show.name}} class="name"></one_show></h1>
+    <h1>Edit {{one_show.name}}</h1>
     <form action="/shows/{{one_show.id}}/update" method="POST">
         {{% csrf_token %}}
         name: <input type="text" name="show_name" value="{{one_show.name}}">
