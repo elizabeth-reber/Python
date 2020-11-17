@@ -1,0 +1,24 @@
+PIP is a recursive acronym that stands for “PIP Installs Packages” or “Preferred Installer Program”. It’s a command-line utility that allows you to install, reinstall, or uninstall 
+PyPI packages with a simple and straightforward command: pip.  You can control where packages are installed depending on whether or not you are using a virtual environment.  If not 
+using a vEnv then the package is stored in a default location on your local machine.
+
+pip install Django==1.11.9
+Installs the Django package
+
+pip list
+This comand returns a list of all the packages installed
+
+deactivate 
+This will deactivate your virtual environment
+
+pip3 list
+Pip3 is a version of the pip installer for python3, which can download and configure new python modules with a simple one line command like… Pip3 relies on PyPI (the Python Package Index) 
+which is a software repository where versions of community-managed modules are maintained.
+
+source myEnvironments/py3Env/bin/activate
+This supposedly activates the virtual environment, but it does not work as such on my pc.  I have to use source py3Env/Scripts/activate to get my vEnv to turn on.
+
+pip freeze
+You can see all of the modules that have been installed using the pip install command on my windows command prompt and the versions of those modules.  I wanted to know how pip freeze and 
+pip list are different.  there are two differences: Output format, freeze gives us the standard requirement format that may be used later with pip install -r to install requirements from. 
+Output content, pip list include editables which pip freeze does not.
