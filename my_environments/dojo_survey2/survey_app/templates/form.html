@@ -9,7 +9,7 @@
     <h1>fill out the form</h1>
     <form action="/process" method='POST'>
         {% csrf_token %}
-        Name: <input type="text name="name>
+        Name: <input type="text" name='name'>
         Language: <select name='language'>
             <option value="klingon">Klingon</option>
             <option value="dothraki">Dothraki</option>
@@ -21,6 +21,9 @@
             <option value="earth2020">Earth 2020</option>
         </select>
         <input type="submit" value='New User'>
+        <label for="comment">Comment (optional):</label>
+        <textarea id="comment" name="comment" class="form-control"></textarea>  
+        <button class="btn btn-primary">Submit</button> 
     </form>
 </body>
 </html>

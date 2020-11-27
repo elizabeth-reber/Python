@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New User</title>
+    <title>Random Word Generator</title>
 </head>
 <body>
-    <h1>New User:</h1>
-    <p>Name: {{name}}, Location: {{loc}}, Language: {{lang}}</p>
-    <button class="btn btn-primary">Go Back</button>
+    <h1>Random Word</h1>
+    <h2>guesses: {{request.session.count}}</h2>
+
+    <a href="/reset">Reset Count</a>
 </body>
 </html>

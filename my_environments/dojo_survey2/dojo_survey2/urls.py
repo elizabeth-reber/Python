@@ -16,7 +16,12 @@ Including another URLconf
 from django.urls import path, include          
 
 urlpatterns = [
-    path('', include('survey_app.urls')),	   
+    path('', include('survey_app.urls', 'random_word_app.urls')),	   
     
 ]
 
+# urlpatterns = [
+#     path('', views.home, name='home'),
+#     path('about/', views.about, name='about'),
+#     path('contact/', views.contact, name='contact'),
+# ]

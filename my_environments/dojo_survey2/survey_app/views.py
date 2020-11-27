@@ -11,4 +11,4 @@ def process(request):
             'lang': request.POST['language'],
             'loc': request.POST['location'],
         }
-    return render(request, 'results.html')
+    return render(request, 'results.html', context)
