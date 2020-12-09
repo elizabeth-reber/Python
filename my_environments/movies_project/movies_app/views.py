@@ -1,8 +1,8 @@
 from django.shortcuts import render, HttpResponse
-from .models import User
+from .models import Director, Movie
 
 def index(request):
     context = {
-       "list_of_users": User.objects.all() 
+        Movie.object.all()
     }
     return render(request, 'index.html', context)

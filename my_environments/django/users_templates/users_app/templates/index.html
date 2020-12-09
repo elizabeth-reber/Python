@@ -6,6 +6,18 @@
     <title>Users with Templates</title>
 </head>
 <body>
-    
+    <h1>All the Users</h1>
+    {% for user in list_of_users %}
+    <p>{{user.first_name}} {{user.last_name}} {{user.email_address}} {{user.age}}</p>
+    {%  endfor %}
+    <form action="/submission" method="POST">
+        {% csrf_token %}
+        First Name: <input type="text" first_name="first_name">
+        Last Name: <input type="text" last_name="last_name">
+        Email Address: <input type="text" email_address="email_address">
+        Age: <input type="text" age="age">
+        Comment: <input type="text" comment="comment">
+        <input type="submit">
+    </form>
 </body>
 </html>
