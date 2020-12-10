@@ -7,16 +7,15 @@
 </head>
 <body>
     <h1>Add a Dojo</h1>
-    <form action="/submission" method="POST">
+    <form action="/submit_dojo" method="POST">
         {% csrf_token %}
         Name: <input type="text" name='name'>
-        City: <input type="text" city='city'>
-        State: <input type="text" state='state'>
-        </select>
-        <input type="submit">
-
+        City: <input type="text" name='city'>
+        State: <input type="text" name='state'>
+        <button type='submit'>Add Dojo</button>
+    </form>
     <h1>Add a Ninja</h1>
-    <form action="/submission" method="POST">
+    <form action="/submit_ninja" method="POST">
         {% csrf_token %}
         First Name: <input type="text" name='first_name'>
         Dojo: <select name="dojo">
@@ -24,7 +23,7 @@
             <option value="dojo.id">{{dojo.name}}</option>
             {% endfor %}
         </select>
-        <input type="submit">
+        <button type='submit'>Submit Ninja</button>
     </form>
     <h1>All the dojos and ninjas</h1>
     <ul>
