@@ -1,0 +1,41 @@
+Query: Create 3 new dojos
+ClassName.objects.create(field1="value for field1", field2="value for field2", etc.)
+
+Query: Delete the 3 dojos you just created  
+c = ClassName.objects.get(id=1)
+c.delete()
+
+Query: Create 3 more dojos  
+ClassName.objects.create(field1="value for field1", field2="value for field2", etc.)
+
+Query: Create 3 ninjas that belong to the first dojo  
+c = ClassName.objects.get(id=1)
+c.field_name = "some new value for field_name"
+c.save()
+ 
+Query: Create 3 ninjas that belong to the second dojo  
+c = ClassName.objects.get(id=1)
+c.field_name = "some new value for field_name"
+c.save()
+ 
+Query: Create 3 ninjas that belong to the third dojo  
+c = ClassName.objects.get(id=1)
+c.field_name = "some new value for field_name"
+c.save()
+ 
+ Query: Retrieve all the ninjas from the first dojo  
+ ClassName.objects.all().order_by("field_name") - orders by field provided, ascending
+ 
+ Query: Retrieve all the ninjas from the last dojo  
+ ClassName.objects.all().order_by("field_name") - orders by field provided, ascending
+ 
+ Query: Retrieve the last ninja's dojo  
+ ClassName.objects.get(id=1).__dict__ - shows all the values of a single record as a dictionary
+ 
+ Add a new text field called "desc" to your Dojo class  
+ 
+ 
+ Create and run the migration files to update the table in your database. If needed, provide a default value of "old dojo"  
+ 
+ 
+ Query: Create a new dojo  Submit your .txt file that contains all the queries you ran in the shell

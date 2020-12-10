@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users with Templates</title>
+</head>
+<body>
+    <h1>Add a Dojo</h1>
+    <form action="/submission" method="POST">
+        {% csrf_token %}
+        Name: <input type="text" name='name'>
+        City: <input type="text" city='city'>
+        State: <input type="text" state='state'>
+        </select>
+        <input type="submit">
+
+    <h1>Add a Ninja</h1>
+    <form action="/submission" method="POST">
+        {% csrf_token %}
+        First Name: <input type="text" name='first_name'>
+        Dojo: <select name="dojo">
+            {% for dojo in list_of_dojos %}
+            <option value="dojo.id">{{dojo.name}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit">
+    </form>
+    <h1>All the dojos and ninjas</h1>
+    <ul>
+        {% for dojo in list_of_dojos %}
+        <li>{{dojo.name}}</li>
+        <ul>
+            {% for ninja in dojo.ninja.all %}
+            <li>{{ninja.name}}</li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </ul>
+        
+
+</body>
+</html>
+
+
