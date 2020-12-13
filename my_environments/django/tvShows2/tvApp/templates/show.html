@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show</title>
+</head>
+<body>
+    {% if show_info %}
+        <h1>{{show_info.title}}</h1>
+        <h2>Show Details</h2>
+        <ul>
+            {% for show_info in {{show_info.title}} %}
+            <li>{{Show_info.title}}</li>
+            <ul>
+                {% if show_info.show.all %}
+                {% for show in show_info.show.all %}
+                <li>{{show_info.id}}</li>
+                <li>{{show_info.title}}</li>
+                <li>{{show_info.network}}</li>
+                <li>{{show_info.description}}</li>
+                <li>{{show_info.release_date}}</li>
+                {% endfor %}
+                {% endif %}
+            </ul>
+            {% endfor %}
+    {% else %}
+        <h1>No show selected</h1>
+    {% endif %}
+    <button type='edit'>edit</button>
+    <button type='delete'>delete</button>
+</body>
+</html>
