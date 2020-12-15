@@ -15,9 +15,13 @@ Including another URLconf
 """
 from django.urls import path, include          
 
+
 urlpatterns = [
     path('shows/', include('tvApp.urls')),
-    path('', include('tvApp.urls')),	   
+    path('', include('tvApp.urls')),
+    #path('', views.shows),
+    #path('shows/', include('shows.urls')), 
+    	   
     
 ]
 

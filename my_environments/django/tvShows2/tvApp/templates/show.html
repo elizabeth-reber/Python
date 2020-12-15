@@ -8,26 +8,20 @@
 <body>
     {% if show_info %}
         <h1>{{show_info.title}}</h1>
-        <h2>Show Details</h2>
-        <ul>
-            {% for show_info in {{show_info.title}} %}
-            <li>{{Show_info.title}}</li>
-            <ul>
-                {% if show_info.show.all %}
-                {% for show in show_info.show.all %}
-                <li>{{show_info.id}}</li>
-                <li>{{show_info.title}}</li>
-                <li>{{show_info.network}}</li>
-                <li>{{show_info.description}}</li>
-                <li>{{show_info.release_date}}</li>
-                {% endfor %}
-                {% endif %}
-            </ul>
-            {% endfor %}
+            <h1>TV Show: {{show_info.title}}</h1>
+            <h4>ID: {{show_info.id}}</h4>
+            <h4>Network: {{show_info.network}}</h4>
+            <h4>Description: {{show_info.description}}</h4>
+            <h4>Release Date: {{show_info.release_date}}</h4>
+            <a href="/shows/{{ show.id }}">Show</a> | <a href="/shows/{{ show.id }}/edit">Edit</a> | <a href="/shows/{{ show.id }}/delete">Delete</a></td>
     {% else %}
-        <h1>No show selected</h1>
+        <h4>No show selected</h4>
     {% endif %}
-    <button type='edit'>edit</button>
-    <button type='delete'>delete</button>
+    <a href='/shows/edit'>
+        <button type='edit'>edit</button>
+    </a>
+    <a href='/shows/delete'>
+        <button type='delete'>delete</button>
+    </a>
 </body>
 </html>

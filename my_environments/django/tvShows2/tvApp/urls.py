@@ -5,5 +5,7 @@ urlpatterns = [
     path('', views.index), #shows will use this path
     path('<int:show_id>/edit', views.edit),
     path('<int:show_id>', views.show),
-    path('create', views.create)   
+    path('create', views.create),
+    path('<int:show_id>/delete', views.delete),  
+    path('<int:show_id>', views.update) 
 ]

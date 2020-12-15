@@ -7,7 +7,10 @@ def index(request):
     return render(request, 'shows.html', context)
     
 def edit(request, show_id):
-    return render(request, 'edit.html')
+    context = {
+        'show': Show.objects.get(id=show_id)
+    }
+    return render(request, 'edit.html', context)
 
 def show(request, show_id):
     context = {
@@ -25,3 +28,16 @@ def create(request):
         #return render(request, 'show.html', dict(show=show))
         return redirect(f'/{show.id}')
     return render(request, 'new.html')
+
+def delete(request, show_id):
+    to_delete = Show.objects.get(id=show_id)
+    to_delete.delete()
+    return redirect('/shows')
+
+def update(request, show_id):
+    to_update = show.object.get(id=show_id)
+    to_update.title = request.POST['title']
+    to_update.release_date = request.POST['release_date']
+    to_update.network = request.POST['network']
+    to_update.description = request.POST['description']
+    return redirect('/shows/')
