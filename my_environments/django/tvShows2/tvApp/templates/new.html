@@ -7,7 +7,14 @@
 </head>
 <body>
     <h1>Add a Show</h1>
-    <form class="show-create-form" action="/shows/create" method="POST">
+    {% if messages %}
+        <ul class="messages">    
+        {% for message in messages %}    
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+        {% endfor %}
+        </ul>   
+    {% endif %}
+    <form class="show-create-form" action="/create" method="POST">
         {% csrf_token %}
         <label for="show-title">Title:&nbsp;</label>
         <input id="show-title" type="text" name="title"><br>
@@ -17,9 +24,7 @@
         <input id="show-description" type="text" name="description"><br>
         <label for="show-release">Release Date:&nbsp;</label>
         <input id="show-release" type="date" name="release_date"><br>
-        <a href='create'>
-            <button type='submit'>Add Show</button>
-        </a>
+        <button type='submit'>Add Show</button>
         
     </form>
 </body>

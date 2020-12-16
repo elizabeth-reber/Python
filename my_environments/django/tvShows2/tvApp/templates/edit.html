@@ -9,6 +9,13 @@
 
     <body>
         <h1>Edit a Show</h1>
+        {% if messages %}
+            <ul class="messages">    
+                {% for message in messages %}    
+                    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+                {% endfor %}
+            </ul>
+        {% endif %}
         <form class="edit-show" action="/shows/edit" method="POST">
             {% csrf_token %}
             <label for="edit-title">Title:&nbsp;</label>
