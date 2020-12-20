@@ -7,10 +7,10 @@ def index(request):
     if 'userid' in request.session:
         user = User.objects.filter(id=request.session['userid'])
         if user:
-            return redirect("/wall")
+            return redirect("/quote_dashboard")
     return render(request, 'index.html')
 
-def wall(request):
+def quote_dashboard(request):
     if 'userid' in request.session:
         user = User.objects.filter(id=request.session['userid'])
         if user:
@@ -18,7 +18,7 @@ def wall(request):
                 "user": user[0],
                 "wall_messages": Wall_Message.objects.all()
             }
-            return render(request, 'wall.html', context)
+            return render(request, 'quote_dashboard.html', context)
     return redirect('/')
 
 def login(request):
@@ -27,7 +27,7 @@ def login(request):
         logged_user = user[0] 
         if bcrypt.checkpw(request.POST['password'].encode(), logged_user.password.encode()):
             request.session['userid'] = logged_user.id
-            return redirect('/wall')
+            return redirect('/quote_dashboard')
     return redirect("/")
 
 def register(request):
@@ -37,14 +37,12 @@ def register(request):
         messages.error(request, 'Email is already registered')
         return redirect('/')
     if len(errors) > 0:
-        # if the errors dictionary contains anything, loop through each key-value pair and make a flash message
         for key, value in errors.items():
             messages.error(request, value)
-        # redirect the user back to the form to fix the errors
         return redirect('/')
     else:
         password = request.POST['password']
-        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()  # create the hash    
+        pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode()   
         print(pw_hash)      
         new_user = User.objects.create(
             first_name=request.POST['first_name'], 
@@ -54,9 +52,9 @@ def register(request):
             ) 
         request.session['userid'] = new_user.id
         messages.success(request, "User successfully created")
-        return redirect("/wall")   
+        return redirect("/quote_dashboard")   
         messages.success(request, "User successfully created")
-        return redirect('/wall')
+        return redirect('/quote_dashboard')
     return redirect('/')
 
 def logoff(request):
@@ -72,7 +70,7 @@ def post_message(request):
                 poster=user
             )
 
-    return redirect('/wall')
+    return redirect('/quote_dashboard')
 
 def post_comment(request, wall_comment_id):
     if request.method =="POST":
@@ -84,5 +82,31 @@ def post_comment(request, wall_comment_id):
                 poster=user,
                 wall_message=wall_message
             )
+    return redirect('/quote_dashboard')
 
-    return redirect('/wall')
+def delete_comment(request, delete_comment_id):
+    if request.method =="POST":
+        if 'userid' in request.session:
+            user = User.objects.get(id=request.session['userid'])
+            delete_message = Comment.objects.get(id=delete_comment_id)
+            delete_message.delete()
+    return redirect('/quote_dashboard')
+
+def delete_message(request, delete_message_id):
+    if request.method =="POST":
+        if 'userid' in request.session:
+            user = User.objects.get(id=request.session['userid'])
+            delete_message = Wall_Message.objects.get(id=delete_message_id)
+            delete_message.delete()
+
+    return redirect('/quote_dashboard')
+
+def edit(request):
+    if request.method =="POST":
+        if 'userid' in request.session:
+            user = User.objects.get(id=request.session['userid'])
+            edit_user = User.objects.get(id=edit_user)
+            edit_user.save()
+
+    return redirect('/edit')
+

@@ -7,6 +7,8 @@ class UserManager(models.Manager):
             errors["first_name"] = "First name should be at least 2 characters"
         if len(postData['last_name']) < 2:
             errors["last_name"] = "Last name should be at least 2 characters"
+        # if len(postData['post_message']) < 1:
+        #     errors["post_message"] = "Enter text to submit quote."
         return errors
 
 class User(models.Model):

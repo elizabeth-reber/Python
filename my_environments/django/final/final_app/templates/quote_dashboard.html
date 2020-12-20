@@ -1,12 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Wall</title>
-</head>
-<body>
-    <h1>The Wall</h1>
+  <html>
+    <head>
+      <meta charset="utf-8">
+      <title>Quote Dashboard</title>
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+      <script src="{% static 'js/script.js' %}"></script>
+    </head>
+    <body>
+    <img src="{% static 'img/image.jpg' %}" />
+    <h1>Quote Dashboard</h1>
     {% if messages %}
     <ul class="messages">    
         {% for message in messages %}    
@@ -17,34 +20,48 @@
     <div>
         <h1>Welcome {{user.first_name}} {{ user.last_name}}!</h1>
         <a href="/logoff">logoff</a>
+        <a href="/edit">edit account</a>
     </div>
     <div>
-        <h2>Post a Wall Message</h2>
+        <h2>Post a Quote</h2>
         <form action="/post_message" method="POST">
             {% csrf_token %}
             <textarea name="post_message"></textarea>
-            <p><button type="submit">Post a message</button></p>
+            <p><button type="submit">Post a quote</button></p>
+        
         </form>
     </div>
     <div>
-        <h2>Wall Messages</h2>
+        <h2>Quotes</h2>
         {% if wall_messages %}
             {% for wall_message in wall_messages %}
                 <h3>{{wall_message.poster.first_name}} {{wall_message.poster.last_name}} - {{wall_message.created_at}}</h3>
                 <h4>{{wall_message.message}}</h4>
+                <form action="/delete_message/{{wall_message.id}}" method="POST">
+                    {% csrf_token %}
+                    <button type="submit">Delete Message</button>
+                </form>
                 {% if wall_message.post_comments %}
                     {% for post_comment in wall_message.post_comments.all %}
                         <h5>{{post_comment.poster.first_name}} {{post_comment.poster.last_name}} - {{post_comment.created_at}}</h5>
                         <h5>{{post_comment.message}}</h5>
+                        <form action="/delete_comment/{{post_comment.id}}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit">Delete Comment</button>
+                        </form>
                     {% endfor %}
                 {% endif %}
                 <form action="/post_comment/{{wall_message.id}}" method="POST">
                     {% csrf_token %}
                     <p><textarea name="post_comment"></textarea></p>
                     <button type="submit">Post a Response</button>
+                    
                 </form>
             {% endfor %}
         {% endif %}
+    </div>
+    <div>
+        
     </div>
 </body>
 </html>
